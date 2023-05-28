@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Upload Image</h1>
+<form id="imageUploadForm" enctype="multipart/form-data">
+  <input type="file" id="imageInput" accept="image/png">
+  <button type="submit">Upload</button>
+</form>
+
+<script>
+  document.getElementById('imageUploadForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const imageInput = document.getElementById('imageInput');
+
+    const imageFile = imageInput.files[0];
+
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    fetch('/upload/image', {
+      method: 'POST',
+      body: formData
+    })
+            .then(response => {
+              if (response.ok) {
+                console.log('Image uploaded successfully.');
+              } else {
+                console.log('Failed to upload image.');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+  });
+</script>
+
+</body>
+</html>

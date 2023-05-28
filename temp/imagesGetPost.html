@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">!-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" type="text/css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <title>VOLONTER</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="img/logo.png"width="70" height="50" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/static">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Contact Us</a>
+        </li>
+      </ul>
+      <h1>Upload Image</h1>
+      <form id="imageUploadForm" enctype="multipart/form-data">
+        <input type="file" id="imageInput" accept="image/png">
+        <input type="text" id="userIdInput" placeholder="User ID">
+        <button type="submit">Upload</button>
+      </form>
+
+      <script>
+        document.getElementById('imageUploadForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          const imageInput = document.getElementById('imageInput');
+          const userIdInput = document.getElementById('userIdInput');
+
+          const imageFile = imageInput.files[0];
+          const userId = userIdInput.value;
+
+          const formData = new FormData();
+          formData.append('image', imageFile);
+          formData.append('userId', userId);
+
+          fetch('/upload/image', {
+            method: 'POST',
+            body: formData
+          })
+                  .then(response => {
+                    if (response.ok) {
+                      console.log('Image uploaded successfully.');
+                    } else {
+                      console.log('Failed to upload image.');
+                    }
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                  });
+        });
+      </script>
+
+
+    </div>
+</nav>
+
+<h1>Get Image</h1>
+
+<div id="imageContainer">
+  <img id="image" src="" alt="Image">
+</div>
+
+<script>
+  const id = 1; // Replace with the desired user ID
+  const endpointURL = `/upload/image/${id}`;
+
+  fetch(endpointURL)
+          .then(response => {
+            if (response.ok) {
+              return response.blob();
+            } else {
+              throw new Error('Failed to retrieve image.');
+            }
+          })
+          .then(blob => {
+            const imageURL = URL.createObjectURL(blob);
+            document.getElementById('image').src = imageURL;
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+</script>
+
+
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form action="@{/products/addNew/}" method="post">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="productDesc" class="col-form-label">Description:</label>
+            <input type="text" class="form-control" id="productDesc" name="productDescription">
+          </div>
+
+          <div class="form-group">
+            <label for="productName" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="productName" name="productName">
+          </div>
+
+          <div class="form-group">
+            <label for="productPrice" class="col-form-label">Price:</label>
+            <input type="number" class="form-control" id="productPrice" name="productPrice">
+          </div>
+
+          <div class="form-group">
+            <label for="productStock" class="col-form-label">Stock:</label>
+            <input type="number" class="form-control" id="productStock" name="productStock">
+          </div>
+
+          <div class="form-group">
+            <label for="productCatalogId" class="col-form-label">CatalogId:</label>
+            <input type="number" class="form-control" id="productCatalogId" name="catalogId">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<h2 class="mt-4">Payment List</h2>
+<table class="table mt-2">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Card Number</th>
+    <th>Expiry Date</th>
+    <th>Transaction ID</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+    load();
+
+    $('#form').submit(function(e) {
+      e.preventDefault();
+
+      var id = $('#id').val();
+      var data = {
+        id: id ? parseInt(id) : null,
+        name: $('#name').val(),
+        description: $('#description').val(),
+        userId: parseInt($('#userId').val())
+      };
+
+      if (id) {
+        update(data);
+      } else {
+        create(data);
+      }
+    });
+
+    $('#cancelButton').click(function() {
+      resetForm();
+    });
+  });
+
+  function load() {
+    $.ajax({
+      url: '/mission',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        renderList(data);
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  }
+
+  function renderList(data) {
+    var tableBody = $('#tableBody');
+    tableBody.empty();
+
+    data.forEach(function(data) {
+      var row = '<tr>' +
+              '<td>' + data.id + '</td>' +
+              '<td>' + data.name + '</td>' +
+              '<td>' + data.description + '</td>';
+
+      tableBody.append(row);
+    });
+  }
+
+  function create(data) {
+    $.ajax({
+      url: '/mission',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      success: function() {
+        resetForm();
+        load();
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  }
+
+  function update(paymentData) {
+    $.ajax({
+      url: '/mission/' + paymentData.id,
+      type: 'PUT',
+      contentType: 'application/json',
+      data: JSON.stringify(paymentData),
+      success: function() {
+        resetForm();
+        load();
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  }
+
+  // Очищення форми
+  function resetForm() {
+    $('#paymentId').val('');
+    $('#type').val('');
+    $('#cardNumber').val('');
+    $('#expiryDate').val('');
+    $('#transactionId').val('');
+  }
+</script>
+</body>
+</html>
+
+
+</body>
+</html>

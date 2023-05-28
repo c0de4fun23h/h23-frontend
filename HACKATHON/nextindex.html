@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">!-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>HELP UA</title>
+    <link type="image/x-icon" href="img/logo.png" rel = "icon">
+</head>
+<body style="background-color: #7aaf95;">
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #c50d49;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="img/logo.png"width="70" height="50" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="width: 60%;">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Contact Us</a>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"><b>Add New<b></button> 
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex; align-items: center;">
+              <li class="nav-item">
+                  <div class="dropdown">
+                      <span class="nav-link text-white">Voluntaree Account</span>
+                          <div class="dropdown-content">
+                              <a href="#" style="margin-left: 10px; text-decoration: none; color: #c50d49;">Log Out</a>  
+                              <li class="nav-item">
+                                  <img src="img/vltr.png" style="border-radius: 50%; width: 50px; height: 50px; margin-left: 10px;" >
+                              </li>
+                          </div>
+                    </div>
+              </li>
+             
+          </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form action="@{/products/addNew/}" method="post">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New Product</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                    <img style="width: 120px; height: 120px;"src="img/images.png">
+                    <p style = "position: absolute; top: 20px;left: 190px">Оберiть фото</p>
+                    <input style = "position: absolute; left: 300px; width: 200px"type = "file" accept = ".jpg, .png">
+                  <div class="form-group">
+                      <label for="productDesc" class="col-form-label">Description:</label>
+                      <input type="text" class="form-control" id="productDesc" name="productDescription">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="productName" class="col-form-label">Name:</label>
+                      <input type="text" class="form-control" id="productName" name="productName">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>
+<div id = "wrap">
+    <div class = "gay_element">
+        <a href="#" class="modal-link" data-modal-target="modal1">
+            <img src="img/shahed.jpg" style="border-radius: 15px;">
+            <div>
+                <h3 class="xui">Уламок БПЛА "Shahed" збитого над Києвом</h3>
+                <p>Description: Уламок дрона-камiдзе "Shahed", розiгрується...</p>
+            </div>
+        </a>
+    </div>
+    <div class = "gay_element">
+        <a href="#" class="modal-link" data-modal-target="modal2">
+            <img src="img/rpg26.jpg" style="border-radius: 15px;">
+            <div>
+                <h3 class="xui">Викорастане РПГ-26 «Аглень» з Бахмутського напрямку</h3>
+                <p>Description: РПГ-26 "Аглень" було застосоване пiд час...</p>
+            </div>
+        </a>
+    </div>
+    <div class = "gay_element">
+        <a href="#" class="modal-link" data-modal-target="modal3">
+            <img src="img/e14.jpg" style="border-radius: 15px;">
+            <div>
+                <h3 class="xui">Уламок рос. танку Т-14 "Армат"</h3>
+                <p>Description: Т-14 було знищено за допомогою...</p>
+            </div>
+        </a>
+    </div>
+    <div class = "gay_element">
+        <a href="#" class="modal-link" data-modal-target="modal4">
+            <img src="img/shahed.jpg" style="border-radius: 15px;">
+            <div>
+                <h3 class="xui">Уламок БПЛА "Shahed" збитого над Києвом</h3>
+                <p>Description: Уламок дрона-камiдзе "Shahed", розiгрується...</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div id="myDiv">
+    <div id="modal1" style ="overflow: hidden" class="modal">
+      <div style = "width: 600px; max-height: 650px; overflow: scroll;margin-top:0;"class="modal-content">
+        <span class="close">&times;</span>
+        <img src="img/shahed.jpg">
+        <div class = "mcontent">
+        <h2>Уламок БПЛА "Shahed" збитого над Києвом</h2>
+        <p>Description: Уламок дрона-камiдзе "Shahed", розiгрується для збору коштiв на авто для ЗСУ.</p>
+        <p>Last donation: none</p>
+        <p>Our contacts: +380(123)-123-12-13</p>
+        <div><button class = "make-donation">Change Lot</button></div>
+        <span id = "post-date" ></span>
+      </div>
+    </div>
+</div>
+<div id="myDiv">
+    <div id="modal2" style ="overflow: hidden" class="modal">
+      <div style = "width: 600px; max-height: 650px; overflow: scroll;margin-top:0;"class="modal-content">
+        <span class="close">&times;</span>
+        <img src="img/rpg26.jpg">
+        <div class = "mcontent">
+        <h2>Викорастане РПГ-26 «Аглень» з Бахмутського напрямку</h2>
+        <p>Description: Використаний міномет "Ангель" був використаний для стримання наступу ворога на Бахмутському напрямку та збережений в цілях історичної цінності та розіграшу на благодійність.</p>
+        <p>Last donation: none</p>
+        <p>Our contacts: +380(123)-123-12-13</p>
+        <div><button class = "make-donation">Change Lot</button></div>
+        <span id = "post-date" ></span>
+      </div>
+    </div>
+</div>
+<div id="myDiv">
+    <div id="modal3" style ="overflow: hidden" class="modal">
+      <div style = "width: 600px; max-height: 650px; overflow: scroll;margin-top:0;"class="modal-content">
+        <span class="close">&times;</span>
+        <img src="img/e14.jpg">
+        <div class = "mcontent">
+        <h2>Уламок рос.танку Т-14 "Армат"</h2>
+        <p>Description: Був зупинений мінометом "Ангель" на Бахмутському напрямку, а подалі повністю знишенний</p>
+        <p>Last donation: none</p>
+        <p>Our contacts: +380(123)-123-12-13</p>
+        <div><button class = "make-donation">Change Lot</button></div>
+        <span id = "post-date" ></span>
+      </div>
+    </div>
+
+</div>
+<div id="myDiv">
+
+    <div id="modal4" style ="overflow: hidden" class="modal">
+        <div style = "width: 600px; max-height: 650px; overflow: scroll;margin-top:0;"class="modal-content">
+            <span class="close">&times;</span>
+            <img src="img/shahed.jpg">
+      <div class = "mcontent">
+      <h2>Уламок БПЛА "Shahed" збитого над Києвом</h2>
+      <p>Description: Уламок дрона-камiдзе "Shahed", розiгрується для збору коштiв на авто для ЗСУ.</p>
+      <p>Last donation: none</p>
+      <p>Our contacts: +380(123)-123-12-13</p>
+      <div><button class = "make-donation">Change Lot</button></div>
+      <span id = "post-date" ></span>
+    </div>
+</div>
+</div>
+</div>
+
+    
+
+<script>
+    // Get all modal links
+var modalLinks = document.getElementsByClassName("modal-link");
+
+// Attach click event listeners to each modal link
+for (var i = 0; i < modalLinks.length; i++) {
+  modalLinks[i].onclick = function(event) {
+    event.preventDefault();
+    var modalId = this.getAttribute("data-modal-target");
+    var modal = document.getElementById(modalId);
+    var close = modal.getElementsByClassName("close")[0];
+
+    // Open the modal when the link is clicked
+    modal.style.display = "block";
+
+    // Close the modal when the 'x' is clicked
+    close.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close the modal when clicked outside the modal
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  };
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  var currentDate = new Date();
+  var postDateElement = document.getElementById('post-date');
+  postDateElement.textContent = currentDate.toDateString();
+});
+        $(document).ready(function() {
+            // Завантаження списку платежів при завантаженні сторінки
+            loadPaymentList();
+
+            // Додавання або оновлення платежу
+            $('#paymentForm').submit(function(e) {
+                e.preventDefault();
+
+                var paymentId = $('#id').val();
+                var paymentData = {
+                    id: paymentId ? parseInt(paymentId) : null,
+                    name: $('#name').val(),
+                    description: $('#description').val(),
+                    userId: parseInt($('#userId').val())
+                };
+
+                if (paymentId) {
+                    updatePayment(paymentData);
+                } else {
+                    createPayment(paymentData);
+                }
+            });
+
+            // Очищення форми при натисканні кнопки "Cancel"
+            $('#cancelButton').click(function() {
+                resetForm();
+            });
+        });
+
+        // Завантаження списку платежів
+        function loadPaymentList() {
+            $.ajax({
+                url: '/mission',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    renderPaymentList(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Рендеринг списку платежів
+        function renderPaymentList(data) {
+            var paymentTableBody = $('#paymentTableBody');
+            paymentTableBody.empty();
+
+            data.forEach(function(payment) {
+                var row = '<tr>' +
+                            '<td>' + payment.id + '</td>' +
+                            '<td>' + payment.name + '</td>' +
+                            '<td>' + payment.description + '</td>';
+
+                paymentTableBody.append(row);
+            });
+        }
+
+        // Створення платежу
+        function createPayment(paymentData) {
+            $.ajax({
+                url: '/payments',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paymentData),
+                success: function() {
+                    resetForm();
+                    loadPaymentList();
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Оновлення платежу
+        function updatePayment(paymentData) {
+            $.ajax({
+                url: '/payments/' + paymentData.id,
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(paymentData),
+                success: function() {
+                    resetForm();
+                    loadPaymentList();
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Видалення платежу
+        function deletePayment(paymentId) {
+            if (confirm('Are you sure you want to delete this payment?')) {
+                $.ajax({
+                    url: '/payments/' + paymentId,
+                    type: 'DELETE',
+                    success: function() {
+                        loadPaymentList();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        }
+
+        // Заповнення форми для редагування платежу
+        function editPayment(paymentId) {
+            $.ajax({
+                url: '/payments/' + paymentId,
+                type: 'GET',
+                dataType: 'json',
+                success: function(payment) {
+                    $('#paymentId').val(payment.id);
+                    $('#type').val(payment.type);
+                    $('#cardNumber').val(payment.cardNumber);
+                    $('#expiryDate').val(payment.expiryDate);
+                    $('#transactionId').val(payment.transactionId);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Очищення форми
+        function resetForm() {
+            $('#paymentId').val('');
+            $('#type').val('');
+            $('#cardNumber').val('');
+            $('#expiryDate').val('');
+            $('#transactionId').val('');
+        }
+        // Get the modal element
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("modal-id");
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("close");
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// };
+    </script>
+</body>
+</html>
+
+
+</body>
+</html>

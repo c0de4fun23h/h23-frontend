@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+}
+body {
+    color: #27C46B;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+.table-wrapper {
+    width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+}
+.table-title h2 {
+    margin: 6px 0 0;
+    font-size: 22px;
+}
+.table-title .add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.table-title .add-new i {
+    margin-right: 4px;
+}
+table.table {
+    table-layout: fixed;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table th:last-child {
+    width: 100px;
+}
+table.table td a {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 5px;
+    min-width: 24px;
+}    
+table.table td a.add {
+    color: #27C46B;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table td a.add i {
+    font-size: 24px;
+    margin-right: -1px;
+    position: relative;
+    top: 3px;
+}    
+table.table .form-control {
+    height: 32px;
+    line-height: 32px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+table.table .form-control.error {
+    border-color: #f50000;
+}
+table.table td .add {
+    display: none;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+#wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.gay_element {
+    /* border: 1px solid black;  */
+    /* overflow:auto;  */
+    box-sizing: border-box;
+    margin-top: 15px;
+    width: 750px;
+    background-color: white;
+    border-radius: 20px;
+    
+}
+.gay_element a {text-decoration: none;
+display: flex;
+/* flex-direction: row; */
+white-space:pre-line;
+color: black;
+}
+.gay_element a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.xui {
+    word-break: break-all;
+}
+.gay_element  a h3 {
+    overflow-wrap: break-word;
+    margin-top: 15px;
+    margin-right: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+.gay_element a p {
+    display: flex;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.gay_element img {
+    max-width: 30%;
+    max-height: 150px;
+    margin: 15px 15px 15px 15px;
+}
+.gay_element:hover {
+    background-color: #d3cdad;
+    transition: margin-left 0.2s;
+}
+#myModal {
+    align-items: center;
+}
+.modal {
+    display: none; /* Hide the modal by default */
+    z-index: 1; /* Make it appear above the page */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+  }
+  .make-donation {
+    border-radius: 40px;
+    border: 0;
+    padding: 10px;
+    width: 400px;
+    margin-left: 75px;
+    margin-bottom: 15px;
+    background: darkgray;
+  }
+  #close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 20px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
